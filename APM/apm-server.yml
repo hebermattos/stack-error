@@ -1,3 +1,0 @@
-output:
-  elasticsearch:
-    hosts: http://elastic:9200
