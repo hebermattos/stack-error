@@ -7,13 +7,13 @@ services:
     environment:
       - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
     depends_on:
-      - elastic
-  elastic:
+      - elasticsearch
+  elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.4.0
     environment:
       - discovery.type=single-node
       - bootstrap.memory_lock=true
-      - "ES_JAVA_OPTS=-Xms1024m -Xmx1024m"
+      - "ES_JAVA_OPTS=-Xms2048m -Xmx2048m"
     ulimits:
       memlock:
         soft: -1
@@ -27,11 +27,10 @@ services:
     restart: always
     environment:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
-      - "ELASTICSEARCH_HOSTS=http://elastic:9200"
     ports:
       - 5601:5601
     depends_on:
-      - elastic
+      - elasticsearch
 
 volumes:
   esdata1:
